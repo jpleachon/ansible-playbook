@@ -29,7 +29,6 @@
 
 - name: install oracle-installer.jar
   shell: "echo 'Installed Successfully' > ~/install.log"
-  shell: "java -jar oracle-installer.jar > install.log"
 
   name: Fetch install.log to Jenkins Workspace
   fetch:
