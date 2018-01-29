@@ -30,7 +30,7 @@
 - name: install oracle-installer.jar
   shell: "echo 'Installed Successfully' > ~/install.log"
 
-  name: Fetch install.log to Jenkins Workspace
+- name: Fetch install.log to Jenkins Workspace
   fetch:
     src: "~/install.log"
     dest: "{{ jenkinsworkspace }}"
