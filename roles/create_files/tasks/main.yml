@@ -21,3 +21,8 @@
     src: "../templates/shellscript.sh.j2"
     dest: "~/{{ folder2 }}/shellscript.sh"
     mode: 755
+
+- name: Copy oracle-installer.jar to server
+  copy:
+    src: "../files.oracle-installer.jar"
+    dest: "~/{{ folder1 }}/oracle-installer.jar"
