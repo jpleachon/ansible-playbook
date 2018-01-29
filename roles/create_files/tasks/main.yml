@@ -1,16 +1,16 @@
-- name: create file inside the shellmodule-pao folder
+- name: create file inside the {{ folder1 }} folder
   file: 
     state: touch
-    path: "~/shellmodule-pao/{{ item }}"
+    path: "~/{{ folder1 }}/{{ item }}"
   with_items:
     - samplefile1
     - samplefile2
     - samplefile3
 
-- name: create file inside the filemodule-pao folder
+- name: create file inside the {{ folder2 }}
   file: 
     state: touch
-    path: "~/filemodule-pao/{{ item.filename }}_{{ item.envtype }}"
+    path: "~/{{ folder2 }}/{{ item.filename }}_{{ item.envtype }}"
   with_items:
     - { filename: 'file1', envtype: 'CI' }
     - { filename: 'file2', envtype: 'DEV' }
