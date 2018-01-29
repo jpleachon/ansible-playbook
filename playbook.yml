@@ -1,0 +1,36 @@
+---
+- hosts: ansible-sample
+  tasks:
+    - name: check if shellmodule-pao already exists 
+      stat: 
+        path: "~/shellmodule-pao"
+      register: shellmodulevariable
+
+    - debug: var=shellmodulevariable
+    
+    - name: create folder using shell module
+      shell: "mkdir ~/shellmodule-pao"
+      when: shellmodulevariable.stat.exists != true
+
+    - name: create folder using file module
+      file:
+        state: directory
+        path: "~/filemodule-pao"
+
+    - name: create file inside the shellmodule-pao folder
+      file: 
+        state: touch
+        path: "~/shellmodule-pao/{{ item }}"
+      with_items:
+        - samplefile1
+        - samplefile2
+        - samplefile3
+
+    - name: create file inside the filemodule-pao folder
+      file: 
+        state: touch
+        path: "~/filemodule-pao/{{ item.filename }}_{{ items.envtype }}"
+      with_items:
+        - { filename: 'file1', envtype: 'CI' }
+        - { filename: 'file2', envtype: 'DEV' }
+        - { filename: 'file3', envtype: 'TEST' }
