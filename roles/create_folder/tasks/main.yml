@@ -1,0 +1,15 @@
+- name: check if shellmodule-pao already exists 
+  stat: 
+    path: "~/shellmodule-pao"
+  register: shellmodulevariable
+
+- debug: var=shellmodulevariable
+    
+- name: create folder using shell module
+  shell: "mkdir ~/shellmodule-pao"
+  when: shellmodulevariable.stat.exists != true
+
+- name: create folder using file module
+  file:
+    state: directory
+    path: "~/filemodule-pao"
