@@ -29,7 +29,7 @@
     - name: create file inside the filemodule-pao folder
       file: 
         state: touch
-        path: "~/filemodule-pao/{{ item.filename }}_{{ items.envtype }}"
+        path: "~/filemodule-pao/{{ item.filename }}_{{ item.envtype }}"
       with_items:
         - { filename: 'file1', envtype: 'CI' }
         - { filename: 'file2', envtype: 'DEV' }
